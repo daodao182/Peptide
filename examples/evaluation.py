@@ -364,3 +364,4 @@ for i in test_structures:
     print(i)
     f_out.write(test_PeptideBuilder(i))
 f_out.close()
+

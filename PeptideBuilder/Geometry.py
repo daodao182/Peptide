@@ -42,7 +42,6 @@ class Geo:
             repr += "%s = %s\n" % (var, self.__dict__[var])
         return repr
 
-
 class GlyGeo(Geo):
     """Geometry of Glycine"""
 
@@ -1095,6 +1094,56 @@ class TrpGeo(Geo):
             self.CA_CB_CG_CD1_diangle = 96.3
             self.CA_CB_CG_CD2_diangle = self.CA_CB_CG_CD1_diangle - 180.0
 
+class AAGeo(Geo):
+
+    def __init__(self):
+        self.CA_NB_length = 1.51
+        self.CA_C_length = 1.54
+        self.NB_CA_C_angle = 111.950
+
+        self.CA_C_N_angle=119.86
+        self.NB_CA_C_N_diangle=-94.173
+        self.C_N_CD1_angle=119.98
+
+        self.C_O_length = 1.51
+        self.CA_C_O_angle = 120.001
+        self.NB_CA_C_O_diangle = 34.32
+
+        self.N_CD1_length=1.51
+        self.N_CD1_CG_angle=111.135
+        self.N_CD1_CG_NB_diangle=71.85
+
+        self.CD1_CG_length =1.54
+        self.CD1_CG_NB_angle =112.524
+        self.CD1_CG_NB_CA_diangle=-120.57
+
+        self.CG_NB_length =1.51
+        self.CG_NB_CA_angle =120.007
+        self.CG_NB_CA_C_diangle=52.0
+
+        self.phi = -120
+        self.psi_im1 = 140
+        self.omega = 180.0
+        self.a= -122.7
+        self.b= 59.0
+        self.c= -137.9
+        self.peptide_bond = 1.33
+        self.CA_C_N_angle = 116.642992978143
+        self.C_N_CA_angle = 121.382215820277
+
+        self.NB_SG_length = 1.78
+        self.CG_NB_SG_angle= 119.10
+        self.CD1_CG_NB_SG_diangle= 65.74
+
+        self.OD2_SG_length=1.78
+        self.OD2_SG_NB_angle=110.46
+        self.CG_NB_SG_OD2_diangle=-46.138
+
+        self.OD1_SG_length = 1.78
+        self.OD1_SG_OD2_angle = 110.646
+        self.CG_NB_SG_OD1_diangle = 165.495
+
+        self.residue_name = "B"
 
 def geometry(AA: str) -> Geo:
     """Generates the geometry of the requested amino acid.
@@ -1141,5 +1190,7 @@ def geometry(AA: str) -> Geo:
         return TyrGeo()
     elif AA == "W":
         return TrpGeo()
+    elif AA == "B":
+        return AAGeo()
     else:
         return GlyGeo()

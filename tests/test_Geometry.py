@@ -662,3 +662,5 @@ def test_geometry_Y():
     assert g.phi == -120
     assert g.psi_im1 == 140
     assert g.residue_name == "Y"
+
+
