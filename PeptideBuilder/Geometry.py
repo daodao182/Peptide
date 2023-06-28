@@ -1097,51 +1097,98 @@ class TrpGeo(Geo):
 class AAGeo(Geo):
 
     def __init__(self):
-        self.CA_NB_length = 1.51
-        self.CA_C_length = 1.54
-        self.NB_CA_C_angle = 111.950
+        self.CA_NB_length = 1.46
+        self.CA_C_length = 1.52
+        self.NB_CA_C_angle = 111.425
 
-        self.CA_C_N_angle=119.86
-        self.NB_CA_C_N_diangle=-94.173
-        self.C_N_CD1_angle=119.98
+        self.CA_C_N_angle=114.536
+        self.NB_CA_C_N_diangle=-146.253
+        self.NB_CA_C_N_diangle1=-142.754
+        self.C_N_CD1_angle=120.434
 
-        self.C_O_length = 1.51
-        self.CA_C_O_angle = 120.001
-        self.NB_CA_C_O_diangle = 34.32
+        self.C_O_length = 1.225
+        self.CA_C_O_angle =119.92
+        self.NB_CA_C_O_diangle=41.184
+        self.NB_CA_C_O_diangle1 =44.937
 
-        self.N_CD1_length=1.51
-        self.N_CD1_CG_angle=111.135
-        self.N_CD1_CG_NB_diangle=71.85
 
-        self.CD1_CG_length =1.54
-        self.CD1_CG_NB_angle =112.524
-        self.CD1_CG_NB_CA_diangle=-120.57
+        self.N_CD1_length=1.427
+        self.N_CD1_CG_angle=112.261
+        self.N_CD1_CG_NB_diangle=61.910
+        self.N_CD1_CG_NB_diangle1=66.252
 
-        self.CG_NB_length =1.51
-        self.CG_NB_CA_angle =120.007
-        self.CG_NB_CA_C_diangle=52.0
+        self.CD1_CG_length =1.45
+        self.CD1_CG_NB_angle =114.475
+        self.CD1_CG_NB_CA_diangle=-116.094
+        self.CD1_CG_NB_CA_diangle1=-121.202
+
+        self.CG_NB_length =1.54
+        self.CG_NB_CA_angle =117.651
+        self.CG_NB_CA_C_diangle=88.315
+        self.CG_NB_CA_C_diangle1=86.201
 
         self.phi = -120
-        self.psi_im1 = 140
+
         self.omega = 180.0
-        self.a= -122.7
+        self.a= -121.093
+        self.a1=-116.058
         self.b= 59.0
         self.c= -137.9
         self.peptide_bond = 1.33
-        self.CA_C_N_angle = 116.642992978143
-        self.C_N_CA_angle = 121.382215820277
+        self.CA_C_N_angle = 114.536
+        self.C_N_CA_angle = 35.003
 
-        self.NB_SG_length = 1.78
-        self.CG_NB_SG_angle= 119.10
-        self.CD1_CG_NB_SG_diangle= 65.74
 
-        self.OD2_SG_length=1.78
-        self.OD2_SG_NB_angle=110.46
-        self.CG_NB_SG_OD2_diangle=-46.138
+        self.NB_SG_length = 1.625
+        self.CG_NB_SG_angle= 115.052
+        self.CD1_CG_NB_SG_diangle=94.641
+        self.CD1_CG_NB_SG_diangle1= 91.313
 
-        self.OD1_SG_length = 1.78
-        self.OD1_SG_OD2_angle = 110.646
-        self.CG_NB_SG_OD1_diangle = 165.495
+        self.OD2_SG_length=1.42
+        self.OD2_SG_NB_angle=106.396
+        #left
+        self.CA_NB_SG_OD2_diangle=38.915
+        #right
+        # self.CA_NB_SG_OD2_diangle1=170.502
+
+        self.OD1_SG_length = 1.42
+        self.OD1_SG_NB_angle = 106.362
+        #left
+        self.CG_NB_SG_OD1_diangle=-41.980
+        #right
+        # self.CG_NB_SG_OD1_diangle1 = -173.602
+
+        self.CA_C_N_CD1_diangle=-173.574
+        self.CA_C_N_CD1_diangle1=-171.269
+
+
+        self.SG_CD2_length = 1.752
+        self.NB_SG_CD2_angle = 108.581
+        self.CG_NB_SG_CD2_diangle = 72.684
+
+        self.CD2_CE2_length = 1.396
+        self.SG_CD2_CE2_angle = 120.461
+        self.NB_SG_CD2_CE2_diangle = -81.533
+
+        self.CE2_CZ1_length = 1.392
+        self.CD2_CE2_CZ1_angle = 118.296
+        self.SG_CD2_CE2_CZ1_diangle = -177.738
+
+        self.CD2_CE3_length = 1.405
+        self.SG_CD2_CE3_angle = 119.029
+        self.NB_SG_CD2_CE3_diangle = 99.204
+
+        self.CE3_CZ2_length = 1.394
+        self.CD2_CE3_CZ2_angle = 118.128
+        self.SG_CD2_CE3_CZ2_diangle = 179.643
+
+        self.CZ1_CH_length = 1.325
+        self.CE2_CZ1_CH_angle = 120.707
+        self.CD2_CE2_CZ1_CH_diangle = -1.708
+
+        self.CH_Cl17_length = 1.750
+        self.CZ1_CH_Cl17_angle = 119.309
+        self.CE2_CZ1_CH_Cl17_diangle = 179.004
 
         self.residue_name = "B"
 

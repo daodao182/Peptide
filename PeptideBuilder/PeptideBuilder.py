@@ -1181,24 +1181,81 @@ def makeAa(segID: int, N,CD1,CG,NB, CA, C, O, geo: AAGeo) -> Residue:
 
     OD2_SG_length=geo.OD2_SG_length
     OD2_SG_NB_angle=geo.OD2_SG_NB_angle
-    CG_NB_SG_OD2_diangle=geo.CG_NB_SG_OD2_diangle
+    CA_NB_SG_OD2_diangle=geo.CA_NB_SG_OD2_diangle
 
     OD1_SG_length=geo.OD1_SG_length
-    OD1_SG_OD2_angle=geo.OD1_SG_OD2_angle
+    OD1_SG_NB_angle=geo.OD1_SG_NB_angle
     CG_NB_SG_OD1_diangle=geo.CG_NB_SG_OD1_diangle
+
+    SG_CD2_length=geo.SG_CD2_length
+    NB_SG_CD2_angle=geo.NB_SG_CD2_angle
+    CG_NB_SG_CD2_diangle=geo.CG_NB_SG_CD2_diangle
+
+    CD2_CE2_length=geo.CD2_CE2_length
+    SG_CD2_CE2_angle=geo.SG_CD2_CE2_angle
+    NB_SG_CD2_CE2_diangle=geo.NB_SG_CD2_CE2_diangle
+
+    CE2_CZ1_length=geo.CE2_CZ1_length
+    CD2_CE2_CZ1_angle=geo.CD2_CE2_CZ1_angle
+    SG_CD2_CE2_CZ1_diangle=geo.SG_CD2_CE2_CZ1_diangle
+
+    CD2_CE3_length=geo.CD2_CE3_length
+    SG_CD2_CE3_angle=geo.SG_CD2_CE3_angle
+    NB_SG_CD2_CE3_diangle=geo.NB_SG_CD2_CE3_diangle
+
+    CE3_CZ2_length=geo.CE3_CZ2_length
+    CD2_CE3_CZ2_angle=geo.CD2_CE3_CZ2_angle
+    SG_CD2_CE3_CZ2_diangle=geo.SG_CD2_CE3_CZ2_diangle
+
+    CZ1_CH_length=geo.CZ1_CH_length
+    CE2_CZ1_CH_angle=geo.CE2_CZ1_CH_angle
+    CD2_CE2_CZ1_CH_diangle=geo.CD2_CE2_CZ1_CH_diangle
+
+    CH_Cl17_length=geo.CH_Cl17_length
+    CZ1_CH_Cl17_angle=geo.CZ1_CH_Cl17_angle
+    CE2_CZ1_CH_Cl17_diangle=geo.CE2_CZ1_CH_Cl17_diangle
 
     sulfur_g=calculateCoordinates(
             CD1, CG, NB, NB_SG_length, CG_NB_SG_angle, CD1_CG_NB_SG_diangle
      )
     SG = Atom("SG", sulfur_g, 0.0, 1.0, " ", " SG", 0, "S")
     oxygen_d2 = calculateCoordinates(
-        CG,NB, SG, OD2_SG_length, OD2_SG_NB_angle, CG_NB_SG_OD2_diangle
+        CA,NB, SG, OD2_SG_length, OD2_SG_NB_angle, CA_NB_SG_OD2_diangle
     )
     OD2 = Atom("OD2", oxygen_d2, 0.0, 1.0, " ", " OD2", 0, "O")
     oxygen_d1 = calculateCoordinates(
-        OD2, NB, SG, OD1_SG_length,  OD1_SG_OD2_angle, CG_NB_SG_OD1_diangle
+        CG, NB, SG, OD1_SG_length,  OD1_SG_NB_angle, CG_NB_SG_OD1_diangle
     )
     OD1 = Atom("OD1", oxygen_d1, 0.0, 1.0, " ", " OD1", 0, "O")
+
+    carbon_d2 = calculateCoordinates(
+        CG, NB, SG, SG_CD2_length, NB_SG_CD2_angle, CG_NB_SG_CD2_diangle
+    )
+    CD2 = Atom("CD2", carbon_d2, 0.0, 1.0, " ", " CD2", 0, "C")
+    carbon_e2 = calculateCoordinates(
+        NB, SG, CD2, CD2_CE2_length, SG_CD2_CE2_angle, NB_SG_CD2_CE2_diangle
+    )
+    CE2 = Atom("CE2", carbon_e2, 0.0, 1.0, " ", " CE2", 0, "C")
+    carbon_z1 = calculateCoordinates(
+        SG, CD2, CE2, CE2_CZ1_length, CD2_CE2_CZ1_angle, SG_CD2_CE2_CZ1_diangle
+    )
+    CZ1 = Atom("CZ1", carbon_z1, 0.0, 1.0, " ", " CZ1", 0, "C")
+    carbon_e3 = calculateCoordinates(
+        NB, SG, CD2, CD2_CE3_length, SG_CD2_CE3_angle, NB_SG_CD2_CE3_diangle
+    )
+    CE3 = Atom("CE3", carbon_e3, 0.0, 1.0, " ", " CE3", 0, "C")
+    carbon_z2 = calculateCoordinates(
+        SG, CD2, CE3, CE3_CZ2_length, CD2_CE3_CZ2_angle, SG_CD2_CE3_CZ2_diangle
+    )
+    CZ2 = Atom("CZ2", carbon_z2, 0.0, 1.0, " ", " CZ2", 0, "C")
+    carbon_h = calculateCoordinates(
+        CD2, CE2, CZ1, CZ1_CH_length, CE2_CZ1_CH_angle, CD2_CE2_CZ1_CH_diangle
+    )
+    CH = Atom("CH", carbon_h, 0.0, 1.0, " ", " CH", 0, "C")
+    chlorine_17 = calculateCoordinates(
+        CE2, CZ1, CH, CH_Cl17_length, CZ1_CH_Cl17_angle, CE2_CZ1_CH_Cl17_diangle
+    )
+    Cl17 = Atom("Cl17", chlorine_17, 0.0, 1.0, " ", " Cl17", 0, "CL")
 
     res = Residue((" ", segID, " "), "ALA", "    ")
     res.add(N)
@@ -1208,9 +1265,17 @@ def makeAa(segID: int, N,CD1,CG,NB, CA, C, O, geo: AAGeo) -> Residue:
     res.add(CA)
     res.add(C)
     res.add(O)
+
     res.add(SG)
     res.add(OD1)
     res.add(OD2)
+    res.add(CD2)
+    res.add(CE2)
+    res.add(CE3)
+    res.add(CZ1)
+    res.add(CZ2)
+    res.add(CH)
+    res.add(Cl17)
     return res
 
 def make_res_of_type(segID: int,N,CD1,CG, NB, CA, C, O, geo: Geo ) -> Residue:
@@ -1294,9 +1359,6 @@ def initialize_res(residue: Union[Geo, str]) -> Structure:
     CG = Atom("CG", CG_coord, 0.0, 1.0, " ", " CG", 0, "C")
     CD1 = Atom("CD1", CD1_coord, 0.0, 1.0, " ", " CD1", 0, "C")
 
-
-    CD1_CG_NB_angle=geo.CD1_CG_NB_angle
-    CD1_CG_NB_CA_diangle=geo.CD1_CG_NB_CA_diangle
     N_CD1_CG_NB_diangle=geo.N_CD1_CG_NB_diangle
 
     CG_NB_length=geo.CG_NB_length
@@ -1363,8 +1425,7 @@ def getReferenceResidue(structure: Structure) -> Residue:
     assert is_aa(resRef)
 
     return resRef
-
-
+#right
 def add_residue_from_geo(structure: Structure, geo: Geo) -> Structure:
     """Adds a residue to chain A model 0 of the given structure, and
     returns the new structure. The residue to be added is determined by
@@ -1384,19 +1445,19 @@ def add_residue_from_geo(structure: Structure, geo: Geo) -> Structure:
 
     ##Backbone Coordinates
 
-    phi = geo.phi
-    psi_im1 = geo.psi_im1
-    omega = geo.omega
+    CG_NB_CA_C_diangle1=geo.CG_NB_CA_C_diangle1
+    NB_CA_C_N_diangle=geo.NB_CA_C_N_diangle
+
     a = geo.a
-    b = geo.b
     c = geo.c
+    N_CD1_CG_NB_diangle1=geo.N_CD1_CG_NB_diangle1
 
     CA_NB_length=geo.CA_NB_length
     CA_C_length=geo.CA_C_length
     NB_CA_C_angle =geo.NB_CA_C_angle
 
     CA_C_N_angle=geo.CA_C_N_angle
-    NB_CA_C_N_diangle=geo.NB_CA_C_N_diangle
+
     C_N_CD1_angle=geo.C_N_CD1_angle
 
     N_CD1_length=geo.N_CD1_length
@@ -1409,14 +1470,15 @@ def add_residue_from_geo(structure: Structure, geo: Geo) -> Structure:
 
     CG_NB_length=geo.CG_NB_length
     CG_NB_CA_angle=geo.CG_NB_CA_angle
+    CA_C_N_CD1_diangle=geo.CA_C_N_CD1_diangle
 
     N_coord = calculateCoordinates(
-        resRef["NB"], resRef["CA"], resRef["C"],peptide_bond, CA_C_N_angle, b
+        resRef["NB"], resRef["CA"], resRef["C"],peptide_bond, CA_C_N_angle, NB_CA_C_N_diangle
     )
     N = Atom("N", N_coord, 0.0, 1.0, " ", " N", 0, "N")
 
     CD1_coord = calculateCoordinates(
-        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle, a
+        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle,CA_C_N_CD1_diangle
     )
     CD1 = Atom("CD1", CD1_coord, 0.0, 1.0, " ", " CD1", 0, "C")
 
@@ -1425,15 +1487,125 @@ def add_residue_from_geo(structure: Structure, geo: Geo) -> Structure:
 
 
     NB= calculateCoordinates(
-        N, CD1, CG, CG_NB_length, CD1_CG_NB_angle,psi_im1
+        N, CD1, CG, CG_NB_length, CD1_CG_NB_angle,N_CD1_CG_NB_diangle1
     )
     NB = Atom("NB", NB, 0.0, 1.0, " ", " NB", 0, "N")
     carbon_a = calculateCoordinates(
-        CD1, CG, NB, CA_NB_length, CG_NB_CA_angle, omega
+        CD1, CG, NB, CA_NB_length, CG_NB_CA_angle, a
     )
     CA = Atom("CA", carbon_a, 0.0, 1.0, " ", " CA", 0, "C")
     carbon = calculateCoordinates(
-        CG, NB, CA, CA_C_length, NB_CA_C_angle, phi
+        CG, NB, CA, CA_C_length, NB_CA_C_angle, CG_NB_CA_C_diangle1
+    )
+    C = Atom("C", carbon, 0.0, 1.0, " ", " C", 0, "C")
+    ##Create Carbonyl atom (to be moved later)
+    C_O_length = geo.C_O_length
+    CA_C_O_angle = geo.CA_C_O_angle
+    NB_CA_C_O_diangle1 = geo.NB_CA_C_O_diangle1
+
+    carbonyl = calculateCoordinates(
+        NB, CA, C, C_O_length, CA_C_O_angle, NB_CA_C_O_diangle1
+    )
+    O = Atom("O", carbonyl, 0.0, 1.0, " ", " O", 0, "O")
+
+
+
+    res = make_res_of_type(segID,N,CD1,CG,NB, CA, C, O, geo)
+
+    resRef["O"].set_coord(
+        calculateCoordinates(
+            res["N"], resRef["CA"], resRef["C"], C_O_length, CA_C_O_angle, 180.0
+        )
+    )
+
+    # ghost = Atom(
+    #     "N",
+    #     calculateCoordinates(
+    #         res["N"], res["CA"], res["C"], peptide_bond, CA_C_N_angle, psi_im1
+    #     ),
+    #     0.0,
+    #     0.0,
+    #     " ",
+    #     "N",
+    #     0,
+    #     "N",
+    # )
+    res["O"].set_coord(
+        calculateCoordinates(
+            res["N"], res["CA"], res["C"], C_O_length, CA_C_O_angle, 180.0
+        )
+    )
+
+    structure[0]["A"].add(res)
+    return structure
+#left
+def add_residue_from_geo1(structure: Structure, geo: Geo) -> Structure:
+    """Adds a residue to chain A model 0 of the given structure, and
+    returns the new structure. The residue to be added is determined by
+    the geometry object given as second argument.
+
+    This function is a helper function and should not normally be called
+    directly. Call add_residue() instead."""
+    resRef = getReferenceResidue(structure)
+    AA = geo.residue_name
+    segID = resRef.get_id()[1]
+    segID += 1
+
+    ##geometry to bring together residue
+    peptide_bond = geo.peptide_bond
+
+    ##Backbone Coordinates
+
+    CG_NB_CA_C_diangle=geo.CG_NB_CA_C_diangle
+
+    a1 = geo.a1
+    c = geo.c
+    N_CD1_CG_NB_diangle=geo.N_CD1_CG_NB_diangle
+
+    CA_NB_length=geo.CA_NB_length
+    CA_C_length=geo.CA_C_length
+    NB_CA_C_angle =geo.NB_CA_C_angle
+
+    CA_C_N_angle=geo.CA_C_N_angle
+    NB_CA_C_N_diangle1=geo.NB_CA_C_N_diangle1
+    C_N_CD1_angle=geo.C_N_CD1_angle
+
+    N_CD1_length=geo.N_CD1_length
+    N_CD1_CG_angle=geo.N_CD1_CG_angle
+
+
+    CD1_CG_length=geo.CD1_CG_length
+    CD1_CG_NB_angle=geo.CD1_CG_NB_angle
+
+
+    CG_NB_length=geo.CG_NB_length
+    CG_NB_CA_angle=geo.CG_NB_CA_angle
+    CA_C_N_CD1_diangle1=geo.CA_C_N_CD1_diangle1
+
+    N_coord = calculateCoordinates(
+        resRef["NB"], resRef["CA"], resRef["C"],peptide_bond, CA_C_N_angle, NB_CA_C_N_diangle1
+    )
+    N = Atom("N", N_coord, 0.0, 1.0, " ", " N", 0, "N")
+
+    CD1_coord = calculateCoordinates(
+        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle,CA_C_N_CD1_diangle1
+    )
+    CD1 = Atom("CD1", CD1_coord, 0.0, 1.0, " ", " CD1", 0, "C")
+
+    CG_coord = calculateCoordinates(resRef["C"], N, CD1, CD1_CG_length, N_CD1_CG_angle, c)
+    CG = Atom("CG", CG_coord, 0.0, 1.0, " ", " CG", 0, "C")
+
+
+    NB= calculateCoordinates(
+        N, CD1, CG, CG_NB_length, CD1_CG_NB_angle,N_CD1_CG_NB_diangle
+    )
+    NB = Atom("NB", NB, 0.0, 1.0, " ", " NB", 0, "N")
+    carbon_a = calculateCoordinates(
+        CD1, CG, NB, CA_NB_length, CG_NB_CA_angle, a1
+    )
+    CA = Atom("CA", carbon_a, 0.0, 1.0, " ", " CA", 0, "C")
+    carbon = calculateCoordinates(
+        CG, NB, CA, CA_C_length, NB_CA_C_angle, CG_NB_CA_C_diangle
     )
     C = Atom("C", carbon, 0.0, 1.0, " ", " C", 0, "C")
     ##Create Carbonyl atom (to be moved later)
@@ -1456,18 +1628,18 @@ def add_residue_from_geo(structure: Structure, geo: Geo) -> Structure:
         )
     )
 
-    ghost = Atom(
-        "N",
-        calculateCoordinates(
-            res["N"], res["CA"], res["C"], peptide_bond, CA_C_N_angle, psi_im1
-        ),
-        0.0,
-        0.0,
-        " ",
-        "N",
-        0,
-        "N",
-    )
+    # ghost = Atom(
+    #     "N",
+    #     calculateCoordinates(
+    #         res["N"], res["CA"], res["C"], peptide_bond, CA_C_N_angle, psi_im1
+    #     ),
+    #     0.0,
+    #     0.0,
+    #     " ",
+    #     "N",
+    #     0,
+    #     "N",
+    # )
     res["O"].set_coord(
         calculateCoordinates(
             res["N"], res["CA"], res["C"], C_O_length, CA_C_O_angle, 180.0
@@ -1520,7 +1692,32 @@ def add_residue(
 
     return add_residue_from_geo(structure, geo)
 
+def add_residue1(
+    structure: Structure, residue: Union[Geo, str], phi=-120, psi_im1=140, omega=-370
+) -> Structure:
+    """Adds a residue to chain A model 0 of the given structure, and
+    returns the new structure. The residue to be added can be specified
+    in two ways: either as a geometry object (in which case
+    the remaining arguments phi, psi_im1, and omega are ignored) or as a
+    single-letter amino-acid code. In the latter case, the optional
+    arguments phi, psi_im1, and omega specify the corresponding backbone
+    angles.
 
+    When omega is specified, it needs to be a value greater than or equal
+    to -360. Values below -360 are ignored."""
+
+    if isinstance(residue, Geo):
+        geo = residue
+    elif isinstance(residue, str):
+        geo = geometry(residue)
+        geo.phi = phi
+        geo.psi_im1 = psi_im1
+        if omega > -361:
+            geo.omega = omega
+    else:
+        raise ValueError("Invalid residue argument:", residue)
+
+    return add_residue_from_geo1(structure, geo)
 def make_structure(
     AA_chain: str, phi: List[float], psi_im1: List[float], omega: Optional[List] = None
 ) -> Structure:
