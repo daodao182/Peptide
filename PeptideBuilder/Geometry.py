@@ -45,20 +45,20 @@ class GlyGeo(Geo):
     """Geometry of Glycine"""
 
     def __init__(self):
-        self.CA_N_length = 1.46
+        self.CA_N_length = 1.45
         self.CA_C_length = 1.52
         self.N_CA_C_angle = 110.8914
 
         self.C_O_length = 1.23
-        self.CA_C_O_angle = 120.5117
-        self.N_CA_C_O_diangle = 180.0
+        self.CA_C_O_angle = 121.48
+        self.N_CA_C_O_diangle = 9.15
 
-        self.phi = -120
-        self.psi_im1 = 140
-        self.omega = 180.0
-        self.peptide_bond = 1.33
-        self.CA_C_N_angle = 116.642992978143
-        self.C_N_CA_angle = 121.382215820277
+        self.phi = 84.22
+        self.psi_im1 = 173.13
+        self.omega = -170.58
+        self.peptide_bond = 1.357
+        self.CA_C_N_angle = 116.25
+        self.C_N_CA_angle = 111.00
 
         self.residue_name = "L"
 
@@ -691,6 +691,15 @@ class AAGeo(Geo):
 
         self.CG_CD1_N_CL_diangle = -54.47
 
+        #gly_aa
+        self.peptide_bond_glyaa = 1.357
+        self.CA_C_N_angle_glyaa = 116.89
+        self.NB_CA_C_N_diangle_glyaa = -171.22
+
+        self.C_N_CD1_angle_glyaa = 122.98
+        self.CA_C_N_CD1_diangle_glyaa = 178.36
+
+        self.c_glyaa = 79.14
         self.residue_name = "H"
 
 class Linker1Geo(Geo):

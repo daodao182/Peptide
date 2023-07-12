@@ -8,10 +8,10 @@ conformation, and it stores the peptide under the name "example.pdb".
 from PeptideBuilder import Geometry
 import PeptideBuilder
 #aa_helix
-geo=Geometry.geometry("H")
-structure = PeptideBuilder.initialize_res(geo)
-for i in range(7):
-    PeptideBuilder.add_residue(structure,geo)
+# geo=Geometry.geometry("H")
+# structure = PeptideBuilder.initialize_res(geo)
+# for i in range(7):
+#     PeptideBuilder.add_residue(structure,geo)
 # geo = Geometry.geometry("C")
 #
 # structure = PeptideBuilder.initialize_res(geo)
@@ -41,7 +41,7 @@ geo=Geometry.geometry("H")
 structure = PeptideBuilder.initialize_res(geo)
 geo2=Geometry.geometry("G")
 PeptideBuilder.add_residue_aagly(structure,geo2)
-for i in range(3):
+for i in range(5):
     PeptideBuilder.add_residue_glyaa(structure, geo)
     PeptideBuilder.add_residue_aagly(structure, geo2)
 

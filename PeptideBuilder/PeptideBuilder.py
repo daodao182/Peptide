@@ -674,16 +674,16 @@ def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
     segID += 1
 
     ##geometry to bring together residue
-    peptide_bond = geo.peptide_bond
-    CA_C_N_angle = geo.CA_C_N_angle
+    peptide_bond_glyaa = geo.peptide_bond_glyaa
+    CA_C_N_angle_glyaa = geo.CA_C_N_angle_glyaa
 
     ##Backbone Coordinates
 
     CG_NB_CA_C_diangle1 = geo.CG_NB_CA_C_diangle1
-    NB_CA_C_N_diangle = geo.NB_CA_C_N_diangle
+    NB_CA_C_N_diangle_glyaa = geo.NB_CA_C_N_diangle_glyaa
 
     a = geo.a
-    c = geo.c
+    c_glyaa = geo.c_glyaa
     N_CD1_CG_NB_diangle1 = geo.N_CD1_CG_NB_diangle1
 
     CA_NB_length = geo.CA_NB_length
@@ -692,7 +692,7 @@ def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
 
     CA_C_N_angle = geo.CA_C_N_angle
 
-    C_N_CD1_angle = geo.C_N_CD1_angle
+    C_N_CD1_angle_glyaa = geo.C_N_CD1_angle_glyaa
 
     N_CD1_length = geo.N_CD1_length
     N_CD1_CG_angle = geo.N_CD1_CG_angle
@@ -702,19 +702,19 @@ def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
 
     CG_NB_length = geo.CG_NB_length
     CG_NB_CA_angle = geo.CG_NB_CA_angle
-    CA_C_N_CD1_diangle = geo.CA_C_N_CD1_diangle
+    CA_C_N_CD1_diangle_glyaa = geo.CA_C_N_CD1_diangle_glyaa
 
     N_coord = calculateCoordinates(
-        resRef["N"], resRef["CA"], resRef["C"], peptide_bond, CA_C_N_angle, NB_CA_C_N_diangle
+        resRef["N"], resRef["CA"], resRef["C"], peptide_bond_glyaa, CA_C_N_angle_glyaa, NB_CA_C_N_diangle_glyaa
     )
     N = Atom("N", N_coord, 0.0, 1.0, " ", " N", 0, "N")
 
     CD1_coord = calculateCoordinates(
-        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle, CA_C_N_CD1_diangle
+        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle_glyaa, CA_C_N_CD1_diangle_glyaa
     )
     CD1 = Atom("CD1", CD1_coord, 0.0, 1.0, " ", " CD1", 0, "C")
 
-    CG_coord = calculateCoordinates(resRef["C"], N, CD1, CD1_CG_length, N_CD1_CG_angle, c)
+    CG_coord = calculateCoordinates(resRef["C"], N, CD1, CD1_CG_length, N_CD1_CG_angle, c_glyaa)
     CG = Atom("CG", CG_coord, 0.0, 1.0, " ", " CG", 0, "C")
 
     NB = calculateCoordinates(
