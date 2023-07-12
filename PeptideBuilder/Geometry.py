@@ -41,17 +41,17 @@ class Geo:
         for var in self.__dict__:
             repr += "%s = %s\n" % (var, self.__dict__[var])
         return repr
-class GlyGeo(Geo):
-    """Geometry of Glycine"""
+class AlaGeo(Geo):
+    """Geometry of Alanin"""
 
     def __init__(self):
-        self.CA_N_length = 1.45
+        self.CA_N_length = 1.46
         self.CA_C_length = 1.52
-        self.N_CA_C_angle = 110.8914
+        self.N_CA_C_angle = 111.068
 
         self.C_O_length = 1.23
-        self.CA_C_O_angle = 121.48
-        self.N_CA_C_O_diangle = 9.15
+        self.CA_C_O_angle = 120.5
+        self.N_CA_C_O_diangle = -60.5
 
         self.phi = 84.22
         self.psi_im1 = 173.13
@@ -59,8 +59,12 @@ class GlyGeo(Geo):
         self.peptide_bond = 1.357
         self.CA_C_N_angle = 116.25
         self.C_N_CA_angle = 111.00
-
-        self.residue_name = "L"
+        
+        self.CA_CB_length = 1.52
+        self.C_CA_CB_angle = 109.5
+        self.N_C_CA_CB_diangle = 122.6860
+        
+        self.residue_name = "A"
 
 
 #helix_first_sidechain
@@ -129,7 +133,7 @@ class HfsGeo(Geo):
         self.O2_S_NB_angle = 109.33
         self.O2_S_NB_CA_diangle = 55.75
 
-        self.residue_name = "A"
+        self.residue_name = "L"
 
     def inputRotamers(self, rotamers: List[float]) -> None:
         try:
@@ -589,7 +593,7 @@ class LfiGeo(Geo):
 
         # sidechain
 
-        self.residue_name = "L"
+        self.residue_name = "G"
 class AAGeo(Geo):
 
     def __init__(self):
@@ -691,15 +695,15 @@ class AAGeo(Geo):
 
         self.CG_CD1_N_CL_diangle = -54.47
 
-        #gly_aa
-        self.peptide_bond_glyaa = 1.357
-        self.CA_C_N_angle_glyaa = 116.89
-        self.NB_CA_C_N_diangle_glyaa = -171.22
+        #ala_aa
+        self.peptide_bond_alaaa = 1.357
+        self.CA_C_N_angle_alaaa = 116.89
+        self.NB_CA_C_N_diangle_alaaa = -171.22
 
-        self.C_N_CD1_angle_glyaa = 122.98
-        self.CA_C_N_CD1_diangle_glyaa = 178.36
+        self.C_N_CD1_angle_alaaa = 122.98
+        self.CA_C_N_CD1_diangle_alaaa = 178.36
 
-        self.c_glyaa = 79.14
+        self.c_alaaa = 79.14
         self.residue_name = "H"
 
 class Linker1Geo(Geo):
@@ -734,7 +738,7 @@ class Linker1Geo(Geo):
         self.CA_C_O_angle = 110.40
         self.NB_CA_C_O_diangle = 63.73
 
-        self.residue_name = "J"
+        self.residue_name = "I"
 
 class Linker2Geo(Geo):
 
@@ -804,7 +808,7 @@ class Linker2Geo(Geo):
         self.CL_C15_C14_C13_diangle = 175.98
 
 
-        self.residue_name = "O"
+        self.residue_name = "J"
 
 
 def geometry(AA: str) -> Geo:
@@ -813,7 +817,7 @@ def geometry(AA: str) -> Geo:
     code. If an invalid code is specified, the function
     returns the geometry of Glycine."""
 
-    if AA == "A":
+    if AA == "L":
         return HfsGeo()
     elif AA == "B":
         return HssGeo()
@@ -825,13 +829,13 @@ def geometry(AA: str) -> Geo:
         return LtsGeo()
     elif AA == "F":
         return LfoGeo()
-    elif AA == "L":
+    elif AA == "G":
         return LfiGeo()
     elif AA == "H":
         return AAGeo()
-    elif AA == "J":
+    elif AA == "I":
         return Linker1Geo()
-    elif AA == "G":
-        return GlyGeo()
+    elif AA == "A":
+        return AlaGeo()
     else:
         return Linker2Geo()

@@ -37,7 +37,7 @@ from .Geometry import (
     LtsGeo,
     LfoGeo,
     LfiGeo,
-    GlyGeo,
+    AlaGeo,
 )
 
 
@@ -158,7 +158,7 @@ def makeHfs(segID: int, N, CD1, CG, NB, CA, C, O, geo: HfsGeo) -> Residue:
     )
     O2 = Atom("O2", oxygen_2, 0.0, 1.0, " ", " O2", 0, "O")
     ##Create Residue DS
-    res = Residue((" ", segID, " "), "ALA", "    ")
+    res = Residue((" ", segID, " "), "GLY", "    ")
     res.add(N)
     res.add(CD1)
     res.add(CG)
@@ -222,7 +222,7 @@ def makeHss(segID: int, N, CD1, CG, NB, CA, C, O, geo: HssGeo) -> Residue:
         S, C1, CZ, NH_CZ_length, NH_CZ_C1_angle, NH_CZ_C1_S_diangle
     )
     NH = Atom("NH", nitrogen_h, 0.0, 1.0, " ", " NH", 0, "N")
-    res = Residue((" ", segID, " "), "ALA", "    ")
+    res = Residue((" ", segID, " "), "GLY", "    ")
     res.add(N)
     res.add(CD1)
     res.add(CG)
@@ -256,15 +256,17 @@ def makeLfs(segID: int, NL, C1, C2, C3, C4, N2, C5, C6, N3, C7, C8, N4, C13, C14
         C3, C4, N2, C9_N2_length, C9_N2_C4_angle, C9_N2_C4_C3_diangle
     )
     C9 = Atom("C9", carbon_9, 0.0, 1.0, " ", " C9", 0, "C")
+
+
+    carbon_11 = calculateCoordinates(
+        N3, C6, C5, 1.538, 107.49, 173.68
+    )
+    C11 = Atom("C11", carbon_11, 0.0, 1.0, " ", " C11", 0, "C")
     carbon_10 = calculateCoordinates(
         C4, N2, C9, C10_C9_length, C10_C9_N2_angle, C10_C9_N2_C4_diangle
     )
     C10 = Atom("C10", carbon_10, 0.0, 1.0, " ", " C10", 0, "C")
-    carbon_11 = calculateCoordinates(
-        N2, C9, C10, C11_C10_length, C11_C10_C9_angle, C11_C10_C9_N2_diangle
-    )
-    C11 = Atom("C11", carbon_11, 0.0, 1.0, " ", " C11", 0, "C")
-    res = Residue((" ", segID, " "), "ALA", "    ")
+    res = Residue((" ", segID, " "), "GLY", "    ")
 
     res.add(NL)
     res.add(C1)
@@ -273,8 +275,8 @@ def makeLfs(segID: int, NL, C1, C2, C3, C4, N2, C5, C6, N3, C7, C8, N4, C13, C14
     res.add(C4)
     res.add(N2)
     res.add(C9)
-    res.add(C10)
     res.add(C11)
+    res.add(C10)
     res.add(C5)
     res.add(C6)
     res.add(N3)
@@ -380,7 +382,7 @@ def makeAa(segID: int, N, CD1, CG, NB, CA, C, O, geo: AAGeo) -> Residue:
     )
     Cl17 = Atom("Cl17", chlorine_17, 0.0, 1.0, " ", " Cl17", 0, "CL")
 
-    res = Residue((" ", segID, " "), "ALA", "    ")
+    res = Residue((" ", segID, " "), "GLY", "    ")
     res.add(N)
     res.add(CD1)
     res.add(CG)
@@ -404,7 +406,7 @@ def makeAa(segID: int, N, CD1, CG, NB, CA, C, O, geo: AAGeo) -> Residue:
 
 
 def makeLinker1(segID: int, N, CD1, CG, NB, CA, C, O, geo: Linker1Geo) -> Residue:
-    res = Residue((" ", segID, " "), "ALA", "    ")
+    res = Residue((" ", segID, " "), "GLY", "    ")
 
     res.add(N)
     res.add(CD1)
@@ -418,7 +420,7 @@ def makeLinker1(segID: int, N, CD1, CG, NB, CA, C, O, geo: Linker1Geo) -> Residu
 
 def makeLinker2(segID: int, NL, C1, C2, C3, C4, N2, C5, C6, N3, C7, C8, N4, C13, C14, C15, CL,
                 geo: Linker2Geo) -> Residue:
-    res = Residue((" ", segID, " "), "ALA", "    ")
+    res = Residue((" ", segID, " "), "GLY", "    ")
 
     res.add(NL)
     res.add(C1)
@@ -438,18 +440,28 @@ def makeLinker2(segID: int, NL, C1, C2, C3, C4, N2, C5, C6, N3, C7, C8, N4, C13,
     res.add(CL)
 
     return res
-def makeGly(segID: int, N, CA, C, O, geo: Geo) -> Residue:
-    """Creates a Glycine residue"""
-    res = Residue((" ", segID, " "), "GLY", "    ")
+def makeAla(segID: int, N, CA, C, O, geo: AlaGeo) -> Residue:
+    """Creates an Alanine residue"""
+    ##R-Group
+    CA_CB_length = geo.CA_CB_length
+    C_CA_CB_angle = geo.C_CA_CB_angle
+    N_C_CA_CB_diangle = geo.N_C_CA_CB_diangle
 
+    carbon_b = calculateCoordinates(
+        N, C, CA, CA_CB_length, C_CA_CB_angle, N_C_CA_CB_diangle
+    )
+    CB = Atom("CB", carbon_b, 0.0, 1.0, " ", " CB", 0, "C")
+
+    res = Residue((" ", segID, " "), "ALA", "    ")
     res.add(N)
     res.add(CA)
     res.add(C)
     res.add(O)
+    res.add(CB)
     return res
 def make_res_of_type_natural(segID: int, N, CA, C, O, geo: Geo) -> Residue:
-    if isinstance(geo, GlyGeo):
-        res = makeGly(segID, N, CA, C, O, geo)
+    if isinstance(geo, AlaGeo):
+        res = makeAla(segID, N, CA, C, O, geo)
     return res
 
 def make_res_of_type1(segID: int, N, CD1, CG, NB, CA, C, O, geo: Geo, ) -> Residue:
@@ -472,7 +484,60 @@ def make_res_of_type2(segID: int, NL, C1, C2, C3, C4, N2, C5, C6, N3, C7, C8, N4
         res = makeLfs(segID, NL, C1, C2, C3, C4, N2, C5, C6, N3, C7, C8, N4, C13, C14, C15, CL, geo)
     return res
 
+def initialize_res_natural(residue: Union[Geo, str]) -> Structure:
+    """Creates a new structure containing a single amino acid. The type and
+    geometry of the amino acid are determined by the argument, which has to be
+    either a geometry object or a single-letter amino acid code.
+    The amino acid will be placed into chain A of model 0."""
 
+    if isinstance(residue, Geo):
+        geo = residue
+    elif isinstance(residue, str):
+        geo = geometry(residue)
+    else:
+        raise ValueError("Invalid residue argument:", residue)
+
+    segID = 1
+    AA = geo.residue_name
+    CA_N_length = geo.CA_N_length
+    CA_C_length = geo.CA_C_length
+    N_CA_C_angle = geo.N_CA_C_angle
+
+    CA_coord = np.array([0.0, 0.0, 0.0])
+    C_coord = np.array([CA_C_length, 0, 0])
+    N_coord = np.array(
+        [
+            CA_N_length * math.cos(N_CA_C_angle * (math.pi / 180.0)),
+            CA_N_length * math.sin(N_CA_C_angle * (math.pi / 180.0)),
+            0,
+        ]
+    )
+
+    N = Atom("N", N_coord, 0.0, 1.0, " ", " N", 0, "N")
+    CA = Atom("CA", CA_coord, 0.0, 1.0, " ", " CA", 0, "C")
+    C = Atom("C", C_coord, 0.0, 1.0, " ", " C", 0, "C")
+
+    ##Create Carbonyl atom (to be moved later)
+    C_O_length = geo.C_O_length
+    CA_C_O_angle = geo.CA_C_O_angle
+    N_CA_C_O_diangle = geo.N_CA_C_O_diangle
+
+    carbonyl = calculateCoordinates(
+        N, CA, C, C_O_length, CA_C_O_angle, N_CA_C_O_diangle
+    )
+    O = Atom("O", carbonyl, 0.0, 1.0, " ", " O", 0, "O")
+
+    res = make_res_of_type_natural(segID, N, CA, C, O, geo)
+
+    cha = Chain("A")
+    cha.add(res)
+
+    mod = Model(0)
+    mod.add(cha)
+
+    struc = Structure("X")
+    struc.add(mod)
+    return struc
 def initialize_res(residue: Union[Geo, str]) -> Structure:
     """Creates a new structure containing a single amino acid. The type and
     geometry of the amino acid are determined by the argument, which has to be
@@ -570,7 +635,7 @@ def getReferenceResidue(structure: Structure) -> Residue:
     assert is_aa(resRef)
 
     return resRef
-def add_residue_from_geo_aagly(structure: Structure, geo: Geo) -> Structure:
+def add_residue_from_geo_aaala(structure: Structure, geo: Geo) -> Structure:
     """Adds a residue to chain A model 0 of the given structure, and
     returns the new structure. The residue to be added is determined by
     the geometry object given as second argument.
@@ -635,7 +700,7 @@ def add_residue_from_geo_aagly(structure: Structure, geo: Geo) -> Structure:
 
     structure[0]["A"].add(res)
     return structure
-def add_residue_aagly(
+def add_residue_aaala(
         structure: Structure, residue: Union[Geo, str], phi=-120, psi_im1=140, omega=-370
 ) -> Structure:
     """Adds a residue to chain A model 0 of the given structure, and
@@ -660,8 +725,8 @@ def add_residue_aagly(
     else:
         raise ValueError("Invalid residue argument:", residue)
 
-    return add_residue_from_geo_aagly(structure, geo)
-def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
+    return add_residue_from_geo_aaala(structure, geo)
+def add_residue_from_geo_alaaa(structure: Structure, geo: Geo) -> Structure:
     """Adds a residue to chain A model 0 of the given structure, and
     returns the new structure. The residue to be added is determined by
     the geometry object given as second argument.
@@ -673,26 +738,22 @@ def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
     segID = resRef.get_id()[1]
     segID += 1
 
-    ##geometry to bring together residue
-    peptide_bond_glyaa = geo.peptide_bond_glyaa
-    CA_C_N_angle_glyaa = geo.CA_C_N_angle_glyaa
 
-    ##Backbone Coordinates
+    peptide_bond_alaaa = geo.peptide_bond_alaaa
+    CA_C_N_angle_alaaa = geo.CA_C_N_angle_alaaa
 
     CG_NB_CA_C_diangle1 = geo.CG_NB_CA_C_diangle1
-    NB_CA_C_N_diangle_glyaa = geo.NB_CA_C_N_diangle_glyaa
+    NB_CA_C_N_diangle_alaaa = geo.NB_CA_C_N_diangle_alaaa
 
     a = geo.a
-    c_glyaa = geo.c_glyaa
+    c_alaaa = geo.c_alaaa
     N_CD1_CG_NB_diangle1 = geo.N_CD1_CG_NB_diangle1
 
     CA_NB_length = geo.CA_NB_length
     CA_C_length = geo.CA_C_length
     NB_CA_C_angle = geo.NB_CA_C_angle
 
-    CA_C_N_angle = geo.CA_C_N_angle
-
-    C_N_CD1_angle_glyaa = geo.C_N_CD1_angle_glyaa
+    C_N_CD1_angle_alaaa = geo.C_N_CD1_angle_alaaa
 
     N_CD1_length = geo.N_CD1_length
     N_CD1_CG_angle = geo.N_CD1_CG_angle
@@ -702,19 +763,19 @@ def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
 
     CG_NB_length = geo.CG_NB_length
     CG_NB_CA_angle = geo.CG_NB_CA_angle
-    CA_C_N_CD1_diangle_glyaa = geo.CA_C_N_CD1_diangle_glyaa
+    CA_C_N_CD1_diangle_alaaa = geo.CA_C_N_CD1_diangle_alaaa
 
     N_coord = calculateCoordinates(
-        resRef["N"], resRef["CA"], resRef["C"], peptide_bond_glyaa, CA_C_N_angle_glyaa, NB_CA_C_N_diangle_glyaa
+        resRef["N"], resRef["CA"], resRef["C"], peptide_bond_alaaa, CA_C_N_angle_alaaa, NB_CA_C_N_diangle_alaaa
     )
     N = Atom("N", N_coord, 0.0, 1.0, " ", " N", 0, "N")
 
     CD1_coord = calculateCoordinates(
-        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle_glyaa, CA_C_N_CD1_diangle_glyaa
+        resRef["CA"], resRef["C"], N, N_CD1_length, C_N_CD1_angle_alaaa, CA_C_N_CD1_diangle_alaaa
     )
     CD1 = Atom("CD1", CD1_coord, 0.0, 1.0, " ", " CD1", 0, "C")
 
-    CG_coord = calculateCoordinates(resRef["C"], N, CD1, CD1_CG_length, N_CD1_CG_angle, c_glyaa)
+    CG_coord = calculateCoordinates(resRef["C"], N, CD1, CD1_CG_length, N_CD1_CG_angle, c_alaaa)
     CG = Atom("CG", CG_coord, 0.0, 1.0, " ", " CG", 0, "C")
 
     NB = calculateCoordinates(
@@ -755,7 +816,7 @@ def add_residue_from_geo_glyaa(structure: Structure, geo: Geo) -> Structure:
 
     structure[0]["A"].add(res)
     return structure
-def add_residue_glyaa(
+def add_residue_alaaa(
         structure: Structure, residue: Union[Geo, str], phi=-120, psi_im1=140, omega=-370
 ) -> Structure:
     """Adds a residue to chain A model 0 of the given structure, and
@@ -780,7 +841,7 @@ def add_residue_glyaa(
     else:
         raise ValueError("Invalid residue argument:", residue)
 
-    return add_residue_from_geo_glyaa(structure, geo)
+    return add_residue_from_geo_alaaa(structure, geo)
 # right
 def add_residue_from_geo(structure: Structure, geo: Geo) -> Structure:
     """Adds a residue to chain A model 0 of the given structure, and
