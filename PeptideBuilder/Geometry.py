@@ -41,31 +41,281 @@ class Geo:
         for var in self.__dict__:
             repr += "%s = %s\n" % (var, self.__dict__[var])
         return repr
+
 class AlaGeo(Geo):
-    """Geometry of Alanin"""
-
     def __init__(self):
-        self.CA_N_length = 1.46
-        self.CA_C_length = 1.52
-        self.N_CA_C_angle = 111.068
 
-        self.C_O_length = 1.23
-        self.CA_C_O_angle = 120.5
-        self.N_CA_C_O_diangle = -60.5
+        self.CA_C_length = 1.504
+        self.N_CA_C_angle = 111.85
+        self.CA_N_length = 1.469
 
-        self.phi = 84.22
-        self.psi_im1 = 173.13
-        self.omega = -170.58
-        self.peptide_bond = 1.357
-        self.CA_C_N_angle = 116.25
-        self.C_N_CA_angle = 111.00
-        
-        self.CA_CB_length = 1.52
-        self.C_CA_CB_angle = 109.5
-        self.N_C_CA_CB_diangle = 122.6860
-        
+        self.C_O_length = 1.248
+        self.CA_C_O_angle = 117.85
+        self.N_CA_C_O_diangle = 157.11
+
+        self.CB_CA_length = 1.517
+        self.CB_CA_C_angle = 111.54
+        self.CB_CA_C_N_diangle = 124.97
+
         self.residue_name = "A"
 
+class AA_odd_Geo(Geo):
+    def __init__(self):
+        self.N_C_length = 1.293
+        self.N_C_CA_angle = 119.98
+        self.N_C_CA_N_diangle = -24.66
+
+        self.CD1_N_length = 1.417
+        self.CD1_N_C_angle = 123.14
+        self.CD1_N_C_CA_diangle = 174.31
+
+        self.CG_CD1_length = 1.498
+        self.CG_CD1_N_angle = 108.91
+        self.CG_CD1_N_C_diangle = -126.10
+
+        self.NB_CG_length = 1.500
+        self.NB_CG_CD1_angle = 112.55
+        self.NB_CG_CD1_N_diangle = 65.68
+
+        self.CA_NB_length = 1.436
+        self.CA_NB_CG_angle = 114.39
+        self.CA_NB_CG_CD1_diangle = 74.05
+
+        self.C_CA_length = 1.443
+        self.C_CA_NB_angle = 120.94
+        self.C_CA_NB_CG_diangle = -128.72
+
+        self.O_C_length = 1.234
+        self.O_C_CA_angle = 121.09
+        self.O_C_CA_NB_diangle = -176.54
+
+        self.CE1_CD1_length = 1.493
+        self.CE1_CD1_CG_angle = 109.43
+        self.CE1_CD1_CG_NB_diangle = -173.67
+
+        self.SG_NB_length = 1.634
+        self.SG_NB_CG_angle = 116.07
+        self.SG_NB_CG_CD1_diangle = -147.65
+
+        self.OD1_SG_length = 1.399
+        self.OD1_SG_NB_angle = 108.78
+        self.OD1_SG_NB_CG_diangle = 57.86
+
+        self.OD2_SG_length = 1.424
+        self.OD2_SG_NB_angle = 105.26
+        self.OD2_SG_NB_CA_diangle = -33.87
+
+        self.CD2_SG_length = 1.733
+        self.CD2_SG_NB_angle = 104.88
+        self.CD2_SG_NB_CG_angle = -60.51
+
+        self.CE2_CD2_length = 1.345
+        self.CE2_CD2_SG_angle = 120.60
+        self.CE2_CD2_SG_NB_diangle = -86.00
+
+        self.CZ1_CE2_length = 1.412
+        self.CZ1_CE2_CD2_angle = 119.20
+        self.CZ1_CE2_CD2_SG_diangle = 176.88
+
+        self.CE3_CD2_length = 1.418
+        self.CE3_CD2_SG_angle = 120.25
+        self.CE3_CD2_SG_NB_diangle = 94.20
+
+        self.CZ2_CE3_length = 1.357
+        self.CZ2_CE3_CD2_angle = 120.74
+        self.CZ2_CE3_CD2_SG_diangle = -178.21
+
+        self.CH_CZ1_length = 1.342
+        self.CH_CZ1_CE2_angle = 119.53
+        self.CH_CZ1_CE2_CD2_diangle = 1.24
+
+        self.Cl17_CH_length = 1.763
+        self.Cl17_CH_CZ1_angle = 119.55
+        self.Cl17_CH_CZ1_CE2_diangle = 177.27
+
+        self.residue_name = "M"
+
+class AA_even_Geo(Geo):
+    def __init__(self):
+        self.N_C_length = 1.346
+        self.N_C_CA_angle = 116.24
+        self.N_C_CA_N_diangle = -28.08
+
+        self.CD1_N_length = 1.487
+        self.CD1_N_C_angle = 124.56
+        self.CD1_N_C_CA_diangle = 173.63
+
+        self.CG_CD1_length = 1.515
+        self.CG_CD1_N_angle = 109.55
+        self.CG_CD1_N_C_diangle = -118.70
+
+        self.NB_CG_length = 1.533
+        self.NB_CG_CD1_angle = 109.48
+        self.NB_CG_CD1_N_diangle = 61.74
+
+        self.CA_NB_length = 1.479
+        self.CA_NB_CG_angle = 113.52
+        self.CA_NB_CG_CD1_diangle = 75.63
+
+        self.C_CA_length = 1.520
+        self.C_CA_NB_angle = 116.26
+        self.C_CA_NB_CG_diangle = -140.84
+
+        self.O_C_length = 1.251
+        self.O_C_CA_angle = 115.40
+        self.O_C_CA_NB_diangle = -172.77
+
+        self.CE1_CD1_length = 1.513
+        self.CE1_CD1_CG_angle = 109.87
+        self.CE1_CD1_CG_NB_diangle = -174.15
+
+        self.residue_name = "N"
+
+class Ala_odd_Geo(Geo):
+    def __init__(self):
+
+        self.N_C_length = 1.320
+        self.N_C_CA_angle = 123.10
+        self.N_C_CA_NB_diangle = 3.54
+
+        self.CA_N_length = 1.421
+        self.CA_N_C_angle = 121.09
+        self.CA_N_C_CA_diangle = -177.47
+
+        self.C_CA_length = 1.483
+        self.C_CA_N_angle = 115.00
+        self.C_CA_N_C_diangle = -72.52
+
+        self.CB_CA_length = 1.493
+        self.CB_CA_C_angle = 110.27
+        self.CB_CA_C_N_diangle = 126.84
+
+
+        self.C_O_length = 1.248
+        self.CA_C_O_angle = 117.85
+        self.N_CA_C_O_diangle = 157.19
+
+        self.residue_name = "O"
+
+class Ala_even_Geo(Geo):
+    def __init__(self):
+        self.N_C_length = 1.379
+        self.N_C_CA_angle = 123.10
+        self.N_C_CA_NB_diangle = 3.54
+
+        self.CA_N_length = 1.421
+        self.CA_N_C_angle = 121.09
+        self.CA_N_C_CA_diangle = -177.47
+
+        self.C_CA_length = 1.483
+        self.C_CA_N_angle = 115.00
+        self.C_CA_N_C_diangle = -72.52
+
+        self.CB_CA_length = 1.493
+        self.CB_CA_C_angle = 110.27
+        self.CB_CA_C_N_diangle = 126.84
+
+        self.C_O_length = 1.226
+        self.CA_C_O_angle = 121.98
+        self.N_CA_C_O_diangle = 152.28
+
+        self.residue_name = "P"
+
+#aa_ala_linker
+class LinkerGeo(Geo):
+    def __init__(self):
+        self.N1_C_length = 1.415
+        self.N1_C_CA_angle = 122.28
+        self.N1_C_CA_N_diangle = -80.88
+
+        self.C5_N1_length = 1.426
+        self.C5_N1_C_angle = 129.33
+        self.C5_N1_C_CA_diangle = -164.19
+
+        self.C6_C5_length = 1.522
+        self.C6_C5_N1_angle = 114.64
+        self.C6_C5_N1_C_diangle = 179.90
+
+        self.C7_C6_length = 1.539
+        self.C7_C6_C5_angle = 114.64
+        self.C7_C6_C5_N1_diangle = 179.05
+
+        self.C8_C7_length = 1.480
+        self.C8_C7_C6_angle = 110.54
+        self.C8_C7_C6_C5_diangle = -176.02
+
+        self.O3_C8_length = 1.224
+        self.O3_C8_C7_angle = 121.04
+        self.O3_C8_C7_C6_diangle = 87.98
+
+        self.N2_C8_length = 1.336
+        self.N2_C8_C7_angle = 115.83
+        self.N2_C8_C7_C6_diangle = -91.43
+
+        self.C9_N2_length = 1.447
+        self.C9_N2_C8_angle = 122.53
+        self.C9_N2_C8_C7_diangle = -164.62
+
+        self.C10_C9_length = 1.497
+        self.C10_C9_N2_angle = 109.17
+        self.C10_C9_N2_C8_diangle = -114.51
+
+        self.O4_C10_length = 1.227
+        self.O4_C10_C9_angle = 121.22
+        self.O4_C10_C9_N2_diangle = -2.91
+
+        self.N3_C10_length = 1.341
+        self.N3_C10_C9_angle = 115.99
+        self.N3_C10_C9_N2_diangle = 177.40
+
+        self.C11_N3_length = 1.435
+        self.C11_N3_C10_angle = 123.13
+        self.C11_N3_C10_C9_diangle = -116.00
+
+        self.C12_C11_length = 1.527
+        self.C12_C11_N3_angle = 110.53
+        self.C12_C11_N3_C10_diangle = 119.92
+
+        self.C13_C12_length = 1.535
+        self.C13_C12_C11_angle = 111.39
+        self.C13_C12_C11_N3_diangle = -177.32
+
+        self.C4_C13_length = 1.502
+        self.C4_C13_C12_angle = 113.91
+        self.C4_C13_C12_C11_diangle = 179.83
+
+        self.O2_C4_length = 1.212
+        self.O2_C4_C13_angle = 125.03
+        self.O2_C4_C13_C12_diangle = 179.27
+
+        self.residue_name = "L"
+
+class linker_Ala_Geo(Geo):
+    def __init__(self):
+        self.N_C4_length = 1.336
+        self.N_C4_C13_angle = 116.74
+        self.N_C4_C13_C12_diangle = 5.40
+
+        self.CA_N_length = 1.421
+        self.CA_N_C4_angle = 123.32
+        # self.CA_N_C4_angle = 117.10
+        self.CA_N_C4_C13_diangle = 154.74
+        # self.CA_N_C4_C13_diangle = 179.92
+
+        self.C_CA_length = 1.483
+        self.C_CA_N_angle = 115.00
+        self.C_CA_N_C4_diangle = -118.38
+        # self.C_CA_N_C4_diangle = -70.86
+
+        self.CB_CA_length = 1.493
+        self.CB_CA_C_angle = 110.27
+        self.CB_CA_C_N_diangle = 126.84
+
+        self.C_O_length = 1.226
+        self.CA_C_O_angle = 121.98
+        self.N_CA_C_O_diangle = 152.28
+
+        self.residue_name = "J"
 
 #helix_first_sidechain
 class HfsGeo(Geo):
@@ -86,8 +336,7 @@ class HfsGeo(Geo):
 
         self.N_CD1_length = 1.427
         self.N_CD1_CG_angle = 112.261
-        self.N_CD1_CG_NB_diangle = 61.910
-        self.N_CD1_CG_NB_diangle1 = 66.252
+        self.N_CD1_CG_NB_diangle = 66.18
 
         self.CD1_CG_length = 1.45
         self.CD1_CG_NB_angle = 114.475
@@ -133,21 +382,15 @@ class HfsGeo(Geo):
         self.O2_S_NB_angle = 109.33
         self.O2_S_NB_CA_diangle = 55.75
 
-        self.residue_name = "L"
+        self.CD2_S_length = 1.752
+        self.CD2_S_NB_angle = 108.581
+        self.CD2_S_NB_CG_diangle = 72.684
 
-    def inputRotamers(self, rotamers: List[float]) -> None:
-        try:
-            self.N_CA_CB_CG_diangle = rotamers[0]
-            self.CA_CB_CG_CD1_diangle = rotamers[1]
-            if self.CA_CB_CG_CD1_diangle > 0:
-                self.CA_CB_CG_CD2_diangle = rotamers[1] - 180.0
-            else:
-                self.CA_CB_CG_CD2_diangle = rotamers[1] + 180.0
-        except IndexError:
-            print("Input Rotamers List: not long enough")
-            self.N_CA_CB_CG_diangle = -66.4
-            self.CA_CB_CG_CD1_diangle = 96.3
-            self.CA_CB_CG_CD2_diangle = self.CA_CB_CG_CD1_diangle - 180.0
+        self.CE1_CD1_length = 1.530
+        self.CE1_CD1_CG_angle = 108.23
+        self.CE1_CD1_CG_NB_diangle = -175.64
+
+        self.residue_name = "K"
 
 #helix_second_sidechain
 class HssGeo(Geo):
@@ -168,8 +411,7 @@ class HssGeo(Geo):
 
         self.N_CD1_length = 1.427
         self.N_CD1_CG_angle = 112.261
-        self.N_CD1_CG_NB_diangle = 61.910
-        self.N_CD1_CG_NB_diangle1 = 66.252
+        self.N_CD1_CG_NB_diangle = 66.18
 
         self.CD1_CG_length = 1.45
         self.CD1_CG_NB_angle = 114.475
@@ -208,28 +450,44 @@ class HssGeo(Geo):
         self.S_NB_CG_CD1_diangle = 86.41
 
         self.O1_S_length = 1.90
-        self.O1_S_NB_angle = 107.64
-        self.O1_S_NB_CA_diangle = 51.51
+        self.O1_S_NB_angle = 109.50
+        self.O1_S_NB_CA_diangle = 29.98
 
         self.O2_S_length = 1.90
-        self.O2_S_NB_angle = 106.09
-        self.O2_S_NB_CG_diangle = -42.32
+        self.O2_S_NB_angle = 109.56
+        self.O2_S_NB_CG_diangle = -60.38
 
-        self.C1_S_length = 1.81
-        self.C1_S_NB_angle = 108.85
-        self.C1_S_NB_CG_diangle = 74.19
+        self.C1_S_length = 1.90
+        self.C1_S_NB_angle = 109.59
+        self.C1_S_NB_CG_diangle = 59.11
 
         self.CZ_C1_length = 1.54
-        self.CZ_C1_S_angle = 109.54
-        self.CZ_C1_S_NB_diangle = -135.16
+        self.CZ_C1_S_angle = 109.08
+        self.CZ_C1_S_NB_diangle = -178.31
 
         self.NH_CZ_length = 1.51
-        self.NH_CZ_C1_angle = 109.38
-        self.NH_CZ_C1_S_diangle = -179.96
+        self.NH_CZ_C1_angle = 109.36
+        self.NH_CZ_C1_S_diangle = 179.53
+
+        self.CE1_CD1_length = 1.539
+        self.CE1_CD1_CG_angle = 102.48
+        self.CE1_CD1_CG_NB_diangle = -177.83
+
+        self.CG2_CE1_lenth = 1.54
+        self.CG2_CE1_CD1_angle = 109.62
+        self.CG2_CE1_CD1_CG_diangle = 171.56
+
+        self.CD3_CG2_length = 1.54
+        self.CD3_CG2_CE1_angle = 109.72
+        self.CD3_CG2_CE1_CD1_diangle = -59.62
+
+        self.CD2_CG2_length = 1.54
+        self.CD2_CG2_CE1_angle = 109.07
+        self.CD2_CG2_CE1_CD1_diangle = -179.72
 
         self.residue_name = "B"
 
-#loop_first_sidechain
+#linker_first_sidechain
 class LfsGeo(Geo):
     def __init__(self):
         self.NL_C_length = 1.51
@@ -296,6 +554,18 @@ class LfsGeo(Geo):
         self.CL_C15_C14_angle = 103.24
         self.CL_C15_C14_C13_diangle = 175.98
 
+        self.O1_C4_length = 1.51
+        self.O1_C4_C3_angle = 111.37
+        self.O1_C4_C3_C2_diangle = 61.65
+
+        self.O2_C8_length = 1.51
+        self.O2_C8_C7_angle = 110.67
+        self.O2_C8_C7_N3_diangle = -170.25
+
+        self.O3_CL_length = 1.51
+        self.O3_CL_C15_angle = 109.37
+        self.O3_CL_C15_C14_diangle = 66.24
+
         # sidechain
         self.C9_N2_length = 1.517
         self.C9_N2_C4_angle = 101.04
@@ -309,9 +579,25 @@ class LfsGeo(Geo):
         self.C11_C10_C9_angle = 105.60
         self.C11_C10_C9_N2_diangle = 29.75
 
+        self.S_N3_length = 1.904
+        self.S_N3_C6_angle = 110.85
+        self.S_N3_C6_C5_diangle = 68.37
+
+        self.O4_S_length = 1.90
+        self.O4_S_N3_angle = 108.56
+        self.O4_S_N3_C7_diangle = -56.26
+
+        self.O5_S_length = 1.90
+        self.O5_S_N3_angle = 111.31
+        self.O5_S_N3_C6_diangle = -175.24
+
+        self.C12_S_length = 1.932
+        self.C12_S_N3_angle = 110.33
+        self.C12_S_N3_C6_diangle = -57.15
+
         self.residue_name = "C"
 
-#loop_second_sidechain
+#linker_second_sidechain
 class LssGeo(Geo):
     def __init__(self):
         self.NL_C_length = 1.51
@@ -362,27 +648,74 @@ class LssGeo(Geo):
         self.N4_C8_C7_angle = 108.25
         self.N4_C8_C7_N3_diangle = 70.50
 
-        self.C13_N4_length = 1.505
+        self.C13_N4_length = 1.524
         self.C13_N4_C8_angle = 110.62
         self.C13_N4_C8_C7_diangle = -164.22
 
-        self.C14_C13_length = 1.534
-        self.C14_C13_N4_angle = 104.67
+        self.C14_C13_length = 1.535
+        self.C14_C13_N4_angle = 112.11
         self.C14_C13_N4_C8_diangle = 176.52
 
-        self.C15_C14_length = 1.533
-        self.C15_C14_C13_angle = 111.43
-        self.C15_C14_C13_N4_diangle = -171.23
+        self.C15_C14_length = 1.54
+        self.C15_C14_C13_angle = 110.9
+        self.C15_C14_C13_N4_diangle = 179.98
 
-        self.CL_C15_length = 1.534
-        self.CL_C15_C14_angle = 103.24
-        self.CL_C15_C14_C13_diangle = 175.98
+        self.C16_C15_length = 1.54
+        self.C16_C15_C14_angle = 111.27
+        self.C16_C15_C14_C13_diangle = 179.96
+
+        self.C17_C16_length = 1.547
+        self.C17_C16_C15_angle = 111.87
+        self.C17_C16_C15_C14_diangle = -179.84
+
+        self.CL_C17_length = 1.53
+        self.CL_C17_C16_angle = 113.77
+        self.CL_C17_C16_C15_diangle = 179.75
+
+        self.O1_C4_length = 1.51
+        self.O1_C4_C3_angle = 111.37
+        self.O1_C4_C3_C2_diangle = 61.65
+
+        self.O2_C8_length = 1.51
+        self.O2_C8_C7_angle = 110.67
+        self.O2_C8_C7_N3_diangle = -170.25
+
+        self.O3_CL_length = 1.51
+        self.O3_CL_C17_angle = 109.37
+        self.O3_CL_C17_C16_diangle = 66.24
 
         # sidechain
+        self.C9_N2_length = 1.517
+        self.C9_N2_C4_angle = 101.04
+        self.C9_N2_C4_C3_diangle = 177.02
+
+        self.C10_C9_length = 1.54
+        self.C10_C9_N2_angle = 105.60
+        self.C10_C9_N2_C4_diangle = -108.16
+
+        self.C11_C10_length = 1.535
+        self.C11_C10_C9_angle = 105.60
+        self.C11_C10_C9_N2_diangle = 29.75
+
+        self.S_N3_length = 1.904
+        self.S_N3_C6_angle = 110.85
+        self.S_N3_C6_C5_diangle = 68.37
+
+        self.O4_S_length = 1.90
+        self.O4_S_N3_angle = 108.56
+        self.O4_S_N3_C7_diangle = -56.26
+
+        self.O5_S_length = 1.90
+        self.O5_S_N3_angle = 111.31
+        self.O5_S_N3_C6_diangle = -175.24
+
+        self.C12_S_length = 1.932
+        self.C12_S_N3_angle = 110.33
+        self.C12_S_N3_C6_diangle = -57.15
 
         self.residue_name = "D"
 
-#loop_third_sidechain
+#linker_third_structure
 class LtsGeo(Geo):
     def __init__(self):
         self.NL_C_length = 1.51
@@ -453,7 +786,7 @@ class LtsGeo(Geo):
 
         self.residue_name = "E"
 
-#loop_fourth_sidechain
+#linker_fourth_sidechain
 class LfoGeo(Geo):
     def __init__(self):
         self.NL_C_length = 1.51
@@ -504,27 +837,29 @@ class LfoGeo(Geo):
         self.N4_C8_C7_angle = 108.25
         self.N4_C8_C7_N3_diangle = 70.50
 
-        self.C13_N4_length = 1.505
+        self.C13_N4_length = 1.524
         self.C13_N4_C8_angle = 110.62
         self.C13_N4_C8_C7_diangle = -164.22
 
         self.C14_C13_length = 1.534
-        self.C14_C13_N4_angle = 104.67
+        self.C14_C13_N4_angle = 112.11
         self.C14_C13_N4_C8_diangle = 176.52
 
-        self.C15_C14_length = 1.533
-        self.C15_C14_C13_angle = 111.43
-        self.C15_C14_C13_N4_diangle = -171.23
+        self.C15_C14_length = 1.54
+        self.C15_C14_C13_angle = 110.90
+        self.C15_C14_C13_N4_diangle = 179.6
 
         self.CL_C15_length = 1.534
         self.CL_C15_C14_angle = 103.24
         self.CL_C15_C14_C13_diangle = 175.98
 
+
+
         # sidechain
 
         self.residue_name = "F"
 
-#loop_fifth_sidechain
+#linker_fifth_sidechain
 class LfiGeo(Geo):
     def __init__(self):
         self.NL_C_length = 1.51
@@ -608,13 +943,12 @@ class AAGeo(Geo):
 
         self.C_O_length = 1.225
         self.CA_C_O_angle =119.92
-        self.NB_CA_C_O_diangle=41.184
-        self.NB_CA_C_O_diangle1 =44.937
+        self.NB_CA_C_O_diangle1 =44.97
 
         self.N_CD1_length=1.427
         self.N_CD1_CG_angle=112.261
         self.N_CD1_CG_NB_diangle=66.18
-        self.N_CD1_CG_NB_diangle1=66.252
+
 
         self.CD1_CG_length =1.45
         self.CD1_CG_NB_angle =114.475
@@ -706,7 +1040,7 @@ class AAGeo(Geo):
         self.c_alaaa = 79.14
         self.residue_name = "H"
 
-class Linker1Geo(Geo):
+class AA_AAGeo(Geo):
 
     def __init__(self):
 
@@ -740,76 +1074,6 @@ class Linker1Geo(Geo):
 
         self.residue_name = "I"
 
-class Linker2Geo(Geo):
-
-    def __init__(self):
-        self.NL_C_length = 1.51
-        self.NL_C_CA_angle = 105.23
-        self.NL_C_CA_NB_diangle = -178.01
-
-        self.C1_NL_length = 1.51
-        self.C1_NL_C_angle = 113.89
-        self.C1_NL_C_CA_diangle = -177.77
-
-        self.C2_C1_length = 1.54
-        self.C2_C1_NL_angle = 104.31
-        self.C2_C1_NL_C_diangle = 178.46
-
-        self.C3_C2_length = 1.54
-        self.C3_C2_C1_angle = 106.19
-        self.C3_C2_C1_NL_diangle = -57.36
-
-        self.C4_C3_length = 1.54
-        self.C4_C3_C2_angle = 111.33
-        self.C4_C3_C2_C1_diangle = 170.82
-
-        self.N2_C4_length = 1.51
-        self.N2_C4_C3_angle = 109.10
-        self.N2_C4_C3_C2_diangle = -175.94
-
-        self.C5_N2_length = 1.51
-        self.C5_N2_C4_angle = 105.06
-        self.C5_N2_C4_C3_diangle = 53.18
-
-        self.C6_C5_length = 1.54
-        self.C6_C5_N2_angle = 109.58
-        self.C6_C5_N2_C4_diangle = -173.81
-
-        self.N3_C6_length = 1.50
-        self.N3_C6_C5_angle = 111.23
-        self.N3_C6_C5_N2_diangle = 53.68
-
-        self.C7_N3_length = 1.51
-        self.C7_N3_C6_angle = 103.51
-        self.C7_N3_C6_C5_diangle = -163.88
-
-        self.C8_C7_length = 1.54
-        self.C8_C7_N3_angle = 112.26
-        self.C8_C7_N3_C6_diangle = 164.30
-
-        self.N4_C8_length = 1.50
-        self.N4_C8_C7_angle = 108.25
-        self.N4_C8_C7_N3_diangle = 70.50
-
-        self.C13_N4_length = 1.505
-        self.C13_N4_C8_angle = 110.62
-        self.C13_N4_C8_C7_diangle = -164.22
-
-        self.C14_C13_length = 1.534
-        self.C14_C13_N4_angle = 104.67
-        self.C14_C13_N4_C8_diangle = 176.52
-
-        self.C15_C14_length = 1.533
-        self.C15_C14_C13_angle = 111.43
-        self.C15_C14_C13_N4_diangle = -171.23
-
-        self.CL_C15_length = 1.534
-        self.CL_C15_C14_angle = 103.24
-        self.CL_C15_C14_C13_diangle = 175.98
-
-
-        self.residue_name = "J"
-
 
 def geometry(AA: str) -> Geo:
     """Generates the geometry of the requested amino acid.
@@ -817,7 +1081,7 @@ def geometry(AA: str) -> Geo:
     code. If an invalid code is specified, the function
     returns the geometry of Glycine."""
 
-    if AA == "L":
+    if AA == "K":
         return HfsGeo()
     elif AA == "B":
         return HssGeo()
@@ -834,8 +1098,18 @@ def geometry(AA: str) -> Geo:
     elif AA == "H":
         return AAGeo()
     elif AA == "I":
-        return Linker1Geo()
+        return AA_AAGeo()
     elif AA == "A":
         return AlaGeo()
+    elif AA == "J":
+        return linker_Ala_Geo()
+    elif AA == "M":
+        return AA_odd_Geo()
+    elif AA == "N":
+        return AA_even_Geo()
+    elif AA == "O":
+        return Ala_odd_Geo()
+    elif AA == "P":
+        return Ala_even_Geo()
     else:
-        return Linker2Geo()
+        return LinkerGeo()
