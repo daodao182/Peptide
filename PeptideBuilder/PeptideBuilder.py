@@ -1306,32 +1306,6 @@ def add_residue_AA_AA(
     return add_residue_from_geo_AA_AA(structure, geo)
 
 
-def add_residue_aa_linker2_1(
-        structure: Structure, residue: Union[Geo, str], phi=-120, psi_im1=140, omega=-370
-) -> Structure:
-    """Adds a residue to chain A model 0 of the given structure, and
-    returns the new structure. The residue to be added can be specified
-    in two ways: either as a geometry object (in which case
-    the remaining arguments phi, psi_im1, and omega are ignored) or as a
-    single-letter amino-acid code. In the latter case, the optional
-    arguments phi, psi_im1, and omega specify the corresponding backbone
-    angles.
-
-    When omega is specified, it needs to be a value greater than or equal
-    to -360. Values below -360 are ignored."""
-
-    if isinstance(residue, Geo):
-        geo = residue
-    elif isinstance(residue, str):
-        geo = geometry(residue)
-        geo.phi = phi
-        geo.psi_im1 = psi_im1
-        if omega > -361:
-            geo.omega = omega
-    else:
-        raise ValueError("Invalid residue argument:", residue)
-
-    return add_residue_from_geo_aa_linker2_1(structure, geo)
 
 
 
